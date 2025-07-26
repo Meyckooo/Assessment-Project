@@ -48,6 +48,9 @@ and (max-width : 1400px) {
     flex-direction: column;
     row-gap: 40px;
   }
+  .diagnosis_chart_box_holder {
+    max-width: 100%;
+  }
   .diagnosis_chart_box_info {
     max-width: 100%;
   }
@@ -124,14 +127,14 @@ and (max-width : 1000px) {
   padding: 0 15px 25px;
   }
   .sidebar_left_con {
-  order: 1;
+  order: 2;
   }
   .sidebar_right_con {
-  order: 2;
+  order: 3;
   }
   .diagnosis_con {
   max-width: 100%;
-  order: 3;
+  order: 1;
   }
   .diagnosis_history_box {
   max-width: 100%;
@@ -167,7 +170,7 @@ and (max-width : 800px) {
     /* Toggle Style */
   .toggle_right_nav {position: fixed;width:100%;height: auto;z-index: 1000;visibility: hidden; left: 0; top: 123px;}
   .toggle_nav_close {position: absolute; top: 0; left: 0; width: 100%; height: 100%; z-index: 2;pointer-events: none;}
-  .toggle_right_cont {visibility: visible;background: rgba(255,255,255,0.9);z-index: 5; position: absolute; right: 0; left: 0; top: 124px;}
+  .toggle_right_cont {visibility: visible;background: #fff;z-index: 5; position: absolute; right: 0; left: 0; top: 124px;}
   nav.toggle_right_style {}
   .logo_slide_right {display:block;float:left;width: calc(100% - 90px);}
   .menu_slide_right .toggle_holder{transform: unset;top: -100px; right: 0;}
@@ -176,7 +179,7 @@ and (max-width : 800px) {
   .menu_slide_right {display: block;text-align: left;padding: 0;background: var(--black);position: relative;}
   .toggle_right_nav .hamburger-box{width: 30px;line-height: 100%;}
   .toggle_right_nav .hamburger-inner, .toggle_right_nav .hamburger-inner::before, .toggle_right_nav .hamburger-inner::after { width: 30px; }
-  .toggle_right_nav  .page_nav{padding: 25px 15px;}
+  .toggle_right_nav .page_nav{padding: 25px 15px; height: 100vh;}
   
    /* hamburger button */
   .nav_toggle_button small{display: none;}

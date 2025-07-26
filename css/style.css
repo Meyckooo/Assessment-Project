@@ -317,14 +317,27 @@ header{
   background: #F4F0FE;
   border-radius: 12px;
 }
+.diagnosis_chart_box_holder{
+  width: 100%;
+  max-width: 460px;
+}
 .diagnosis_chart_box_info {
   display: flex;
   justify-content: space-between;
   align-items: center;
   gap: 10px;
-  width: 100%;
-  max-width: 460px;
 }
+
+  .chart-container {
+  position: relative;
+  margin: 15px 0 0;
+  border-radius: 10px;
+  }
+
+  .chart-container #myChart {
+    height: 230px !important;
+    width: 100% !important;
+  }
 .diagnosis_chart_dropdown{
     position: relative;
     width: 100%;
@@ -616,6 +629,7 @@ height: 1px;
 .profile_info ul li span {
   font-weight: 700;
 }
+.profile_info ul li a:hover{text-decoration: underline;}
 
 .profile_button {
   width: fit-content;

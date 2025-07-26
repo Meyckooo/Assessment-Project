@@ -106,4 +106,114 @@ $(document).ready(function () {
       headerAccount.classList.toggle('text-hidden');
   });
 
+   // Utility functions to replace the Utils object
+        const Utils = {
+            CHART_COLORS: {
+                red: 'rgb(255, 99, 132)',
+                orange: 'rgb(255, 159, 64)',
+                yellow: 'rgb(255, 205, 86)',
+                green: 'rgb(75, 192, 192)',
+                blue: 'rgb(54, 162, 235)',
+                purple: 'rgb(153, 102, 255)',
+                grey: 'rgb(201, 203, 207)'
+            },
+            
+            transparentize: function(color, opacity) {
+                const alpha = 1 - opacity;
+                return color.replace('rgb', 'rgba').replace(')', `, ${alpha})`);
+            },
+            
+            numbers: function(config) {
+                const count = config.count || 7;
+                const min = config.min || 0;
+                const max = config.max || 100;
+                const result = [];
+                for (let i = 0; i < count; i++) {
+                    result.push(Math.floor(Math.random() * (max - min + 1)) + min);
+                }
+                return result;
+            },
+            
+            months: function(config) {
+                const count = config.count || 7;
+                const months = ['January', 'February', 'March', 'April', 'May', 'June', 
+                               'July', 'August', 'September', 'October', 'November', 'December'];
+                return months.slice(0, count);
+            },
+            
+            namedColor: function(index) {
+                const colors = Object.values(this.CHART_COLORS);
+                return colors[index % colors.length];
+            },
+            
+            rand: function(min, max) {
+                return Math.floor(Math.random() * (max - min + 1)) + min;
+            }
+        };
+
+        // Configuration
+        const NUMBER_CFG = {count: 7, min: -100, max: 100};
+        const labels = Utils.months({count: 7});
+
+        // Data configuration
+        const data = {
+            labels: labels,
+            datasets: [
+                {
+                    label: 'Dataset 1',
+                    data: Utils.numbers(NUMBER_CFG),
+                    borderColor: Utils.CHART_COLORS.red,
+                    backgroundColor: Utils.transparentize(Utils.CHART_COLORS.red, 0.5),
+                    fill: false,
+                    tension: 0.4
+                },
+                {
+                    label: 'Dataset 2',
+                    data: Utils.numbers(NUMBER_CFG),
+                    borderColor: Utils.CHART_COLORS.blue,
+                    backgroundColor: Utils.transparentize(Utils.CHART_COLORS.blue, 0.5),
+                    fill: false,
+                    tension: 0.4
+                }
+            ]
+        };
+
+        // Chart configuration
+        const config = {
+            type: 'line',
+            data: data,
+            options: {
+                responsive: true,
+                maintainAspectRatio: false,
+                plugins: {
+                    legend: {
+                        display: false
+                    }
+                },
+                scales: {
+                    y: {
+                        beginAtZero: false,
+                        grid: {
+                            color: 'rgba(0,0,0,0.1)'
+                        }
+                    },
+                    x: {
+                        grid: {
+                            color: 'rgba(0,0,0,0.1)'
+                        }
+                    }
+                },
+                elements: {
+                    point: {
+                        radius: 6,
+                        hoverRadius: 8
+                    }
+                }
+            }
+        };
+
+        // Initialize the chart
+        const ctx = document.getElementById('myChart').getContext('2d');
+        const chart = new Chart(ctx, config);
+
 });
